@@ -659,6 +659,18 @@ is deactivated automatically."
   (interactive "r")
   (remove-text-properties s e '(face nil)))
 
+;;; My fancy mod
+
+(defun dna-select-region (s e)
+  "Select a DNA sequence region"
+  (interactive "nEnter region start base: 
+nEnter region end base: ")
+  (dna-beginning-of-sequence)
+  (dna-goto-start-of-bases)
+  (dna-forward-base (- s 1))
+  (set-mark (point))
+  (dna-forward-base (- e (- s 1))))
+
 ;;; Functions for me.
 
 ;; I like to datestamp sequences I work with.
